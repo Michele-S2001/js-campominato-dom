@@ -6,9 +6,6 @@ const btnDOMElement = document.getElementById('btn');
 const selectDOMElement = document.getElementById('difficulty');
 const scoreDOMElement = document.getElementById('score');
 
-//indice per il punteggio
-let scoreIndex = 0;
-
 // ascolto l'evento click sul bottone per triggerare l'invocazione di una funzione
 btnDOMElement.addEventListener('click', gameStart);
 
@@ -44,6 +41,9 @@ function cellGenerator (numberOfCells) {
     fieldDOMElement.append(cellDOMElement);
   }
 
+  //indice per il punteggio
+  let scoreIndex = 0;
+
   const bombsArray = getArrayOfRandomIntBetween(1, numberOfCells, 16);
   console.log(bombsArray)
 
@@ -63,7 +63,11 @@ function cellGenerator (numberOfCells) {
       } else {
         currentCell.classList.add('free-cell');
         currentCell.innerHTML = "〰";
-        scoreIndex++;
+        if (scoreIndex === numberOfCells - 16) {
+          alert('finito');
+        } else {
+          scoreIndex++;
+        }
       }
       console.log(scoreIndex);
     });

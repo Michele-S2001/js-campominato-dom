@@ -15,3 +15,4 @@
   - ALTRIMENTI 
     - la cella si colora di verde 
     - il punteggio si incrementa
+      - SE il punteggio è uguale a numero massimo di celle cliccabili, termina la partita
