@@ -53,3 +53,23 @@ function cellGenerator (numcells) {
     currentCell.addEventListener('click', cellSelected);
   }
 } 
+
+function getArrayOfRandomIntBetween (min, max, arraylength) {
+  // inizializzo un array vuoto
+  const bombs = [];
+  // FINCHE' non generi 16 numeri diversi non fermarti
+  while(bombs.length < arraylength) {
+    const n = getRandomIntInclusive(min, max);
+    // se il numero generato è uguale a qualcuno dei precedenti non bisogna inserirlo nell'array
+    if (bombs.includes(n) === false) {
+      bombs.push(n);
+    } 
+  }
+  return bombs;
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
