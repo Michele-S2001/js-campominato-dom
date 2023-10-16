@@ -30,11 +30,6 @@ function fieldSetUp (field, select) {
   }
 }
 
-function cellSelected () {
-  this.classList.add('cell-selected');
-  console.log(this.innerHTML);
-}
-
 function cellGenerator (numcells) {
   // loop per generare gli elementi in pagina
     for (let i = 0; i < numcells; i++) {
@@ -50,7 +45,10 @@ function cellGenerator (numcells) {
   // applicare un eventlistener ad ognuna di esse
   for (let i = 0; i < numcells; i++) {
     let currentCell = cellsDOMElements[i];
-    currentCell.addEventListener('click', cellSelected);
+    currentCell.addEventListener('click', function () {
+      currentCell.classList.add('cell-selected');
+      console.log(currentCell.innerHTML);
+    });
   }
 } 
 
@@ -73,3 +71,9 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+
+// function cellSelected () {
+//   this.classList.add('cell-selected');
+//   console.log(this.innerHTML);
+// }
