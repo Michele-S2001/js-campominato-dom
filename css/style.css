@@ -1,0 +1,126 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Signika', sans-serif;
+  background-color: var(--body-bg);
+}
+
+/* PALETTE */
+html {
+  --header-green: #4A752C;
+  --body-bg: #D5EEA4;
+  --cell-selected-clr: #A2D149;
+  --light-grey: #f5f5f5;
+  --white: #ffffff;
+}
+
+
+/* RESET RULES */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Signika', sans-serif;
+}
+
+select {
+  outline: none;
+  background: transparent;
+  font-family: 'Signika', sans-serif;
+  border: none;
+}
+
+/* UTILITIES */
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.row {
+  display: flex;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+} 
+
+.items-center {
+  align-items: center;
+}
+
+.field {
+  display: grid;
+  /*grid-template-columns: repeat(10, 1fr);*/
+}
+
+.cell-selected {
+  background-color: var(--cell-selected-clr);
+}
+
+/* PAGE HEADER */
+.page-header {
+  background-color: var(--header-green);
+  padding: 10px 5px;
+}
+
+.page-header .game-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--white);
+  cursor: default;
+}
+
+#btn {
+  background-color: var(--light-grey);
+  font-size: 20px;
+  padding: 0 10px;
+  border-radius: 20px;
+}
+
+.difficult-select {
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+  gap: 5px;
+}
+
+.difficult-select #difficulty {
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.difficult-select .difficulty-label {
+  font-size: 18px;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  padding: 40px 5px 10px 5px
+}
+
+.cell {
+  aspect-ratio: 1;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: crosshair;
+  user-select: none;
+}
+
+
+/* debug */
