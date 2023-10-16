@@ -10,7 +10,8 @@
 - In seguito l’utente clicca su una cella:
   - SE se il numero è presente nella lista dei numeri generati:
     - la cella si colora di rosso
-    - la partita termina
+    - la partita termina:
+      - devo stampare il punteggio finale
   - ALTRIMENTI 
     - la cella si colora di verde 
     - il punteggio si incrementa

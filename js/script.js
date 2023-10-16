@@ -3,7 +3,11 @@
 // recupero gli elementi dal DOM
 const fieldDOMElement = document.querySelector('.field');
 const btnDOMElement = document.getElementById('btn');
-const selectDOMElement = document.querySelector('#difficulty');
+const selectDOMElement = document.getElementById('difficulty');
+const scoreDOMElement = document.getElementById('score');
+
+//indice per il punteggio
+let scoreIndex = 0;
 
 // ascolto l'evento click sul bottone per triggerare l'invocazione di una funzione
 btnDOMElement.addEventListener('click', gameStart);
@@ -14,7 +18,7 @@ function gameStart () {
 
 function fieldSetUp (field, select) {
   // un reset precauzionale
-  field.innerHTML = '';            
+  field.innerHTML = '';       
   //recupero la value dalla select
   const difSelected = select.value;
 
@@ -30,24 +34,38 @@ function fieldSetUp (field, select) {
   }
 }
 
-function cellGenerator (numcells) {
+function cellGenerator (numberOfCells) {
   // loop per generare gli elementi in pagina
-    for (let i = 0; i < numcells; i++) {
+  for (let i = 0; i < numberOfCells; i++) {
     const n = i + 1;
     const cellDOMElement = document.createElement('div');
     cellDOMElement.classList.add('cell');
     cellDOMElement.innerHTML = n;
     fieldDOMElement.append(cellDOMElement);
   }
+
+  const bombsArray = getArrayOfRandomIntBetween(1, numberOfCells, 16);
+  console.log(bombsArray)
+
   // prendo tutti gli elementi ".cell"
   const cellsDOMElements = document.querySelectorAll('.cell')
       
   // applicare un eventlistener ad ognuna di esse
-  for (let i = 0; i < numcells; i++) {
+  for (let i = 0; i < numberOfCells; i++) {
     let currentCell = cellsDOMElements[i];
     currentCell.addEventListener('click', function () {
-      currentCell.classList.add('cell-selected');
-      console.log(currentCell.innerHTML);
+      const cellNumber = parseInt(currentCell.innerHTML);
+      //controllo che la cella cliccata non rintri in una dov'è contenuta la bomba
+      if (bombsArray.includes(cellNumber)) {
+        console.log('hai schiacciato una bombazza');
+        currentCell.classList.add('bomb-cell');
+        currentCell.innerHTML = "💣";
+      } else {
+        currentCell.classList.add('free-cell');
+        currentCell.innerHTML = "〰";
+        scoreIndex++;
+      }
+      console.log(scoreIndex);
     });
   }
 } 

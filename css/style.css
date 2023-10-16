@@ -10,9 +10,10 @@ body {
 html {
   --header-green: #4A752C;
   --body-bg: #D5EEA4;
-  --cell-selected-clr: #A2D149;
+  --free-cell: #A2D149;
   --light-grey: #f5f5f5;
   --white: #ffffff;
+  --bomb-cell: #FD3F3F;
 }
 
 
@@ -42,6 +43,7 @@ select {
 .container {
   margin: 0 auto;
   max-width: 1000px;
+  position: relative;
 }
 
 .row {
@@ -62,11 +64,15 @@ select {
 
 .field {
   display: grid;
-  /*grid-template-columns: repeat(10, 1fr);*/
 }
 
-.cell-selected {
-  background-color: var(--cell-selected-clr);
+
+.free-cell {
+  background-color: var(--free-cell);
+}
+
+.bomb-cell {
+  background-color: var(--bomb-cell);
 }
 
 /* PAGE HEADER */
@@ -106,6 +112,11 @@ select {
   font-size: 18px;
 }
 
+/* SCORE */
+.game-stats {
+  font-size: 24px;
+}
+
 /* MAIN CONTENT */
 .main-content {
   padding: 40px 5px 10px 5px
@@ -122,5 +133,17 @@ select {
   user-select: none;
 }
 
+.game-overlay {
+  position: absolute;
+  color: var(--white);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 25px;
+  gap: 20px;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
 /* debug */
