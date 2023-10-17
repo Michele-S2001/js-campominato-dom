@@ -15,7 +15,8 @@ function gameStart () {
 
 function fieldSetUp (field, select) {
   // un reset precauzionale
-  field.innerHTML = '';       
+  field.innerHTML = '';    
+  fieldDOMElement.style.pointerEvents = "auto";   
   //recupero la value dalla select
   const difSelected = select.value;
 
@@ -60,13 +61,16 @@ function cellGenerator (numberOfCells) {
         console.log('hai schiacciato una bombazza');
         currentCell.classList.add('bomb-cell');
         currentCell.innerHTML = "💣";
+        fieldDOMElement.style.pointerEvents = "none";
+        scoreDOMElement.innerHTML += " Game over";
       } else {
         currentCell.classList.add('free-cell');
         currentCell.innerHTML = "〰";
+        scoreIndex++;
+        scoreDOMElement.innerHTML = scoreIndex;
         if (scoreIndex === numberOfCells - 16) {
-          alert('finito');
-        } else {
-          scoreIndex++;
+          scoreDOMElement.innerHTML = "Hai vinto !"
+          fieldDOMElement.style.pointerEvents = "none";
         }
       }
       console.log(scoreIndex);
